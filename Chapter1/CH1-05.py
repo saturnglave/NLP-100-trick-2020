@@ -11,9 +11,9 @@ def n_gram(num, sentence):
 def main():
     s = "I am an NLPer"
     w = s.split()
-    print("文字列n-gram")
+    print("文字単位n-gram")
     print(n_gram(2, s))
-    print("単語n-gram")
+    print("単語単位n-gram")
     print(n_gram(2, w))
 
 
