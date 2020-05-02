@@ -1,4 +1,5 @@
 # coding:utf-8
+# sort -r -n -k 4,4  -t '\t'  popular-names.txt
 import pandas as pd
 
 path = './popular-names.txt'

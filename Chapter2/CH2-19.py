@@ -1,4 +1,5 @@
 # coding:utf-8
+# cut -f 1 popular-names.txt | sort | uniq -c | sort -r
 import pandas as pd
 
 path = './popular-names.txt'

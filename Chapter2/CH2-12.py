@@ -8,7 +8,7 @@ path = './popular-names.txt'
 
 df = pd.read_csv(path, sep='\t', header=None)
 df.columns = ['Name', 'Sex', 'Count', 'Year']
-print(df)
+# print(df)
 
 
 col1 = df['Name']

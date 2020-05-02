@@ -1,4 +1,5 @@
 # coding:utf-8
+# split -l 1000 popular-names.txt
 import argparse
 import pandas as pd
 import numpy as np
