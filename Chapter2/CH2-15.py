@@ -1,5 +1,5 @@
 # coding:utf-8
-# head -n 3 popular-names.txt
+# tail -n 3 popular-names.txt
 import argparse
 import pandas as pd
 
@@ -15,8 +15,8 @@ def main():
     path = './popular-names.txt'
     n = int(arg())
     df = pd.read_csv(path, sep='\t', header=None)
-    print(df[:n])
-    # print(df.head(n))
+    print(df[-n:])
+    # print(df.tail(n))
 
 
 if __name__ == "__main__":
