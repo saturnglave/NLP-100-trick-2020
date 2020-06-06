@@ -29,26 +29,28 @@ def neko_load():
 
 def main():
     cat = neko_load()
-    # print(cat)
     cat_word = []
 
+    # 単語を抽出。今回は猫と同じ文に出てきた名詞と動詞のみ抽出
     for line in cat:
-        for word in line:
-            cat_word.append(word['surface'])
+        if any(word['surface'] == '猫' for word in line):
+            for word in line:
+                if word['pos'] == '名詞' or word['pos'] == '動詞':
+                    cat_word.append(word['surface'])
 
-    # 句読点、空白を抜く
+    # 句読点、空白、'猫'を抜く
     cat_word = [item for item in cat_word if item != '、' and item != '。'
-                and item != '\u3000' and item != '「' and item != '」']
+                and item != '\u3000' and item != '「' and item != '」' and item != '猫']
     # print(cat_word)
+
     count_cat = collections.Counter(cat_word)
     top10 = count_cat.most_common(10)
-    print(top10)
+
     top10_word = [item[0] for item in top10]
     top10_count = [item[1] for item in top10]
-    print(top10_word)
-    print(top10_count)
+
     plt.bar(top10_word, top10_count)
-    plt.title('頻度上位10語')
+    plt.title('猫と共起する単語上位10語')
     plt.show()
 
 

@@ -29,26 +29,31 @@ def neko_load():
 
 def main():
     cat = neko_load()
-    # print(cat)
     cat_word = []
 
+    # 単語を抽出
     for line in cat:
         for word in line:
             cat_word.append(word['surface'])
 
-    # 句読点、空白を抜く
+    # 句読点、空白、記号類を抜く
     cat_word = [item for item in cat_word if item != '、' and item != '。'
                 and item != '\u3000' and item != '「' and item != '」']
     # print(cat_word)
+
     count_cat = collections.Counter(cat_word)
-    top10 = count_cat.most_common(10)
-    print(top10)
-    top10_word = [item[0] for item in top10]
-    top10_count = [item[1] for item in top10]
-    print(top10_word)
-    print(top10_count)
-    plt.bar(top10_word, top10_count)
-    plt.title('頻度上位10語')
+    cat_freq = count_cat.most_common()
+    # print(cat_freq)
+    # 出現数だけリスト化
+    cat_list = list(zip(*cat_freq))[1]
+    print(cat_list)
+
+    plt.hist(cat_list, bins=20, range=(1, 20), color='salmon', ec='darkred')
+    plt.title('吾輩は猫である　単語出現頻度')
+    plt.xlim(xmin=1, xmax=20)
+    plt.xticks([1, 5, 10, 15, 20])
+    plt.xlabel('出現頻度')
+    plt.ylabel('単語の種類数')
     plt.show()
 
 
