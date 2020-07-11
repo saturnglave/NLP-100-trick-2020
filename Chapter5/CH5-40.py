@@ -18,9 +18,7 @@ def CabochaParser():
             # print(tmp_line)
             for item in tmp_line:
                 # print(item)
-                if item == '':
-                    continue
-                elif item[0] == '*':
+                if item == '' or item[0] == '*':
                     continue
                 (surface, attr) = item.split('\t')
                 attr = attr.split(',')
