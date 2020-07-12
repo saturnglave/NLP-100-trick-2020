@@ -35,7 +35,7 @@ def CabochaParser():
 
 def main():
     res = CabochaParser()
-    # Morphクラスのインスタンスのインスタンス変数がほしいので、varsで取り出す
+    # Morphクラスのインスタンス変数がほしいので、varsで取り出す
     for i in res:
         print(vars(i))
 
